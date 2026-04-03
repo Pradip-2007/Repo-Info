@@ -20,10 +20,6 @@ def user_details(username):
 
 def repo_details(username , reponame):
     details ={}
-    response2 = requests.get(f"https://api.github.com/users/{username}")
-    if response2.status_code == 404:
-        print(f"user {username} not found ")
-        return None
     response = requests.get(f"https://api.github.com/repos/{username}/{reponame}")
     if response.status_code == 404:
         print(f"Repo {reponame} of username {username} not found ")
@@ -50,4 +46,4 @@ if __name__ == "__main__":
         details = repo_details(arg.username , arg.reponame)
     if details :
         for key , value in details.items():
-            print(f"{key} : {value} \n")
+            print(f"{key} : {value} ")
